@@ -1,7 +1,7 @@
 # Model from Hugging Face hub
 base_model = "NousResearch/Llama-2-7b-chat-hf"
 # Fine-tuned model save directory
-save_dir = "models/summarizer"
+save_dir = "model"
 
 ####### System prompt
 example_input = {
