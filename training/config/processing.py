@@ -1,6 +1,7 @@
 import torch
 from transformers import AutoModelForCausalLM
 from peft import PeftModel
+import re
 def merge_and_save_model(save_dir:str,base_model:str):
     """
     Will merge the fine-tuned weights to the original model and save it to the chosen dir

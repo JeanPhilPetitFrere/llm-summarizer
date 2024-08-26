@@ -31,6 +31,7 @@ class HuggingFaceAgent:
         model_name : str
             Name of the model in the HuggingFaceHub
         """
+        # TODO: Check __getattribute__ vs __getattr__
         self.model = self.quantize_model(model_name)
         self.tokenizer = self.load_tokenizer(model_name)
     
@@ -64,7 +65,7 @@ class HuggingFaceAgent:
         QuantizedModelForCausalLM
             Quantized model
         """
-        model = self.load_model(model_name)
+        model = self._load_model(model_name)
         return QuantizedModelForCausalLM.quantize(model, weights=qint4, exclude='lm_head')
     
     def load_tokenizer(self, tokenizer_name: str):
