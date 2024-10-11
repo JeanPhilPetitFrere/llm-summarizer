@@ -2,7 +2,9 @@ import torch
 from transformers import AutoModelForCausalLM
 from peft import PeftModel
 import re
-def merge_and_save_model(save_dir:str,base_model:str):
+
+
+def merge_and_save_model(save_dir: str, base_model: str):
     """
     Will merge the fine-tuned weights to the original model and save it to the chosen dir
 
@@ -10,7 +12,7 @@ def merge_and_save_model(save_dir:str,base_model:str):
     ----------
     save_dir : str
         fine-tuned model save directory
-    
+
     base_model : str
         HF identifier of the base model
 
@@ -20,12 +22,12 @@ def merge_and_save_model(save_dir:str,base_model:str):
     """
     # Reload model in FP16 and merge it with LoRA weights
     base_model = AutoModelForCausalLM.from_pretrained(
-                base_model,
-                low_cpu_mem_usage=True,
-                return_dict=True,
-                torch_dtype=torch.float16,
-                device_map={"": 0},
-            )
+        base_model,
+        low_cpu_mem_usage=True,
+        return_dict=True,
+        torch_dtype=torch.float16,
+        device_map={"": 0},
+    )
     try:
         model = PeftModel.from_pretrained(base_model, save_dir)
         merged_model = model.merge_and_unload()
@@ -33,6 +35,7 @@ def merge_and_save_model(save_dir:str,base_model:str):
         return "Merge done"
     except Exception as e:
         return f"An unexpected error as occured: {e}"
+
 
 def get_target_modules(model: AutoModelForCausalLM) -> list:
     """

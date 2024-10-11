@@ -2,14 +2,15 @@ from training.dataset import DatasetGenerator
 from trl import SFTTrainer
 from training.hf_agent import HuggingFaceAgent
 from training.config.variables import (
-    base_model, 
+    base_model,
     save_dir,
 )
 from training.config.parameters import (
-    training_params, 
+    training_params,
     peft_params,
 )
 from training.config.processing import get_target_modules
+
 
 class LLMTrainer:
     """
@@ -38,7 +39,7 @@ class LLMTrainer:
         Format the data into the proper format for LLM training
 
     get_dataset(file_path,response_col,candidate_label_col,assigned_labels_col):
-        Creates a dataset for fine-tuning from a csv file 
+        Creates a dataset for fine-tuning from a csv file
 
     train(training_data_path,response_col,candidate_label_col,assigned_labels_col):
         fine-tunes a LLM and saves it locally
@@ -72,8 +73,8 @@ class LLMTrainer:
         """
         self.hf_agent = HuggingFaceAgent(base_model)
         # Load model
-        self.model =self.hf_agent.model
-        
+        self.model = self.hf_agent.model
+
         # Load tokenizer
         self.tokenizer = self.hf_agent.tokenizer
 
@@ -83,19 +84,14 @@ class LLMTrainer:
 
         # training parameters
         self.training_parameters = training_parameters
-        
+
         # Save directory
         self.save_dir = save_dir
-        
+
         # Dataset generator
         self.get_dataset = DatasetGenerator().get_dataset
-    
-    def train(
-        self,
-        training_data_path: str,
-        input_col: str,
-        output_col: str
-    ):
+
+    def train(self, training_data_path: str, input_col: str, output_col: str):
         """
         fine-tunes a LLM and saves it locally
 
@@ -115,11 +111,7 @@ class LLMTrainer:
         A saved fine-tuned model in the selected local directory
         """
         # Set supervised fine-tuning parameters
-        dataset = self.get_dataset(
-            training_data_path,
-            input_col,
-            output_col
-        )
+        dataset = self.get_dataset(training_data_path, input_col, output_col)
         trainer = SFTTrainer(
             model=self.model,
             train_dataset=dataset["train"],
@@ -140,5 +132,3 @@ class LLMTrainer:
 
         except Exception as e:
             return f"An unexpected error as occured: {e}"
-        
-

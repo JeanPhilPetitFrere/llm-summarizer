@@ -9,12 +9,10 @@ example_input = {
 }
 example_output = "Boosting Equity for the American Middle Class Act of 2016 or the BEAM Act of 2016 This bill amends the Internal Revenue Code to allow a refundable tax credit equal to 50% of the excess home mortgage principal payments made by a taxpayer during the year. The credit is limited to $500 per year and to taxpayers who have not received the credit for any of the 10 preceding years. The bill reduces the amount of the credit for taxpayers with modified adjusted gross incomes above specified levels. An &quot;excess home mortgage principal payment&quot; is the excess of: (1) the amount of principal paid by the taxpayer with respect to a mortgage during the year, over (2) the amount of principal the taxpayer would have paid by making each required payment on a timely basis under the terms of the mortgage (and no other payments). The mortgage must: (1) be for a primary residence, (2) for a term between 15 and 30 years, and (3) require payments that are each the same amount and made in equal intervals during the term of the mortgage (or if any payment is required at a different interval, the amount of the payment is adjusted in the same proportion as the change in interval). Married individuals must file a joint tax return to claim the credit. Persons engaged in a trade or business (e.g., lenders, mortgage companies, or banks) who are required to report mortgage interest payments from individuals of $600 or more must also report the amount of excess home mortgage principal payments received during the year."
 
-input_format = {
-    "text": "XXX"
-}
+input_format = {"text": "XXX"}
 system_prompt = f"""
-You are an expert in the art of summarization. Given a document or passage of text, generate a concise and coherent summary that captures the key information, main ideas, and important details. Ensure that the summary is well-structured, informative, and retains the original context. 
-Focus on preserving the nuance and tone of the original text while delivering a condensed version that is easily comprehensible. 
+You are an expert in the art of summarization. Given a document or passage of text, generate a concise and coherent summary that captures the key information, main ideas, and important details. Ensure that the summary is well-structured, informative, and retains the original context.
+Focus on preserving the nuance and tone of the original text while delivering a condensed version that is easily comprehensible.
 Consider potential use cases such as news articles, research papers, and informative blog posts. Strive for accuracy, clarity, and conciseness in your summarization output.
 
 The input will be a json delimited by triple hashtags in the following format:

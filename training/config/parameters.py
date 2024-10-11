@@ -1,7 +1,7 @@
 import torch
 from transformers import (
-    TrainingArguments, 
-    BitsAndBytesConfig, 
+    TrainingArguments,
+    BitsAndBytesConfig,
 )
 from peft import LoraConfig
 
@@ -47,7 +47,7 @@ peft_params = LoraConfig(
     lora_dropout=lora_dropout,
     r=r,
     bias=bias,
-    task_type=task_type
+    task_type=task_type,
 )
 
 
@@ -72,7 +72,6 @@ training_params = TrainingArguments(
     warmup_ratio=0.03,
     group_by_length=True,
     seed=42,
-    lr_scheduler_type="cosine"  # "constant",
+    lr_scheduler_type="cosine",  # "constant",
     # report_to="tensorboard"
 )
-
