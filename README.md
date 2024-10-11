@@ -17,7 +17,7 @@ docker build . -t llm_summarizer
 Then use the following command to start the container:
 
 ```
-docker compose up
+docker compose up -d
 ```
 
 
