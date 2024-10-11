@@ -1,0 +1,13 @@
+services:
+  llm_summarizer:
+    container_name: dev-llm_summarizer
+    image: llm_summarizer
+    ports:
+      - '8501:8501'
+    environment:
+      - ENV=development
+      - LOG_LEVEL=debug
+    volumes:
+      - .:/app:cached
+
+
