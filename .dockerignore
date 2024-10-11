@@ -1,0 +1,13 @@
+# Directories
+.devcontainer
+.docker
+.git-hooks
+.git
+.github
+infra
+tests
+qa
+
+# Files
+.env
+.venv
