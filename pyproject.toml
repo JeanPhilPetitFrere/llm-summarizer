@@ -15,6 +15,8 @@ scikit-learn = "^1.5.1"
 optimum = "^1.21.4"
 trl = "^0.10.1"
 optimum-quanto = "^0.2.4"
+pre-commit = "^3.8.0"
+streamlit = "^1.38.0"
 
 
 [build-system]
