@@ -73,7 +73,7 @@ class DatasetGenerator:
             Formatted dataset, ready to be used for llm fine-tuning
         """
         # Data loading
-        df = pd.read_csv(file_path, index_col=0)
+        df = pd.read_parquet(file_path)
 
         df["training_prompt"] = df.apply(
             lambda row: self.generate_prompt(row[input_col], row[output_col], True),

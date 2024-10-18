@@ -10,7 +10,7 @@ from training.config.parameters import (
     peft_params,
 )
 from training.config.processing import get_target_modules
-
+import traceback
 
 class LLMTrainer:
     """
@@ -90,6 +90,7 @@ class LLMTrainer:
 
         # Dataset generator
         self.get_dataset = DatasetGenerator().get_dataset
+    
 
     def train(self, training_data_path: str, input_col: str, output_col: str):
         """
@@ -112,17 +113,16 @@ class LLMTrainer:
         """
         # Set supervised fine-tuning parameters
         dataset = self.get_dataset(training_data_path, input_col, output_col)
+
         trainer = SFTTrainer(
             model=self.model,
             train_dataset=dataset["train"],
             eval_dataset=dataset["eval"],
-            peft_config=self.peft_params,
-            dataset_text_field="training_prompt",
-            max_seq_length=None,
-            tokenizer=self.tokenizer,
             args=self.training_parameters,
-            packing=False,
+            peft_config=self.peft_params,
+            tokenizer=self.tokenizer,
         )
+
         try:
             trainer.train()
             # Save trained model
@@ -131,4 +131,5 @@ class LLMTrainer:
             return "training successful"
 
         except Exception as e:
-            return f"An unexpected error as occured: {e}"
+            print(f"An error has occured: {e}")
+            traceback.print_exc()

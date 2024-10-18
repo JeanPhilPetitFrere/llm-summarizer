@@ -19,6 +19,9 @@ pre-commit = "^3.8.0"
 streamlit = "^1.38.0"
 
 
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

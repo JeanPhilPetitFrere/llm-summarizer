@@ -1,7 +1,11 @@
 # Model from Hugging Face hub
 base_model = "NousResearch/Llama-2-7b-chat-hf"
+
 # Fine-tuned model save directory
 save_dir = "model"
+
+# Training dataset location
+training_dataset_location = "training/data/training_dataset.parquet.gzip"
 
 ####### System prompt
 example_input = {
